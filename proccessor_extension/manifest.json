@@ -1,0 +1,45 @@
+{
+    "manifest_version": 3,
+    "name": "Processor Uploader",
+    "description": "Chrome extension for automatic file uploads",
+    "version": "0.1.0",
+    "permissions": [
+        "storage",
+        "tabs",
+        "cookies",
+        "declarativeNetRequest",
+        "webRequest",
+        "downloads"
+    ],
+    "host_permissions": [
+        "https://*.proisource.ru/*",
+        "file://*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://processor-test.proisource.ru/requests/backoffice/*"
+            ],
+            "js": [
+                "js/content.js"
+            ],
+            "css": [
+                "css/uploadButton.css"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "background":{
+        "service_worker": "js/background.js",
+        "type": "module"
+    },
+    "icons": {
+        "16": "icons/logo.png",
+        "32": "icons/logo.png",
+        "48": "icons/logo.png",
+        "128": "icons/logo.png"
+    },
+    "action": {
+        "default_icon": "icons/logo.png"
+    }
+}
